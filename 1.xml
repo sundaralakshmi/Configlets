@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?><cli-configlets>
+<cli-configlet>
+<!-- mandatory --><name>nested_test</name>
+<!-- mandatory --><category>testing</category>
+<context>/device</context>
+<!-- mandatory --><device-family>EX</device-family>
+<description/>
+<!-- mandatory --><execution-type>Single</execution-type>
+<preview-show-parameters>true</preview-show-parameters>
+<preview-show-configuration>true</preview-show-configuration>
+<postview-show-parameters>true</postview-show-parameters>
+<postview-show-configuration>true</postview-show-configuration>
+
+<cli-configlet-pages><!-- At least one configlet page required -->
+<cli-configlet-page>
+<page-number>1</page-number>
+<!-- mandatory --><cli-text>interfaces {
+    $interface {
+        description $desc;
+        mtu $mtu
+        unit 0 {
+            family ethernet-switching;
+        }
+    }
+}</cli-text>
+</cli-configlet-page>
+</cli-configlet-pages>
+
+<cli-configlet-params>
+<cli-configlet-param>
+<!-- mandatory --><parameter>interfaces</parameter>
+<!-- mandatory --><display-name>interfaces</display-name>
+<!-- mandatory --><parameter-type>Selection Field</parameter-type>
+<description/>
+<configured-value-xpath/>
+<default-value/>
+<selection-value-xpath>/device/interface-information/physical-interface/name/text()</selection-value-xpath>
+<selection-values/>
+<!-- mandatory --><parameter-order>1</parameter-order>
+</cli-configlet-param>
+
+<cli-configlet-param>
+<!-- mandatory --><parameter>interface</parameter>
+<!-- mandatory --><display-name>interface</display-name>
+<!-- mandatory --><parameter-type>Text Field</parameter-type>
+<description/>
+<regex-value/>
+<configured-value-xpath>/device/interface-information/physical-interface[name=&apos;$interfaces.get(0)&apos;]/name/text()</configured-value-xpath>
+<default-value/>
+<!-- mandatory --><parameter-order>1</parameter-order>
+</cli-configlet-param>
+
+<cli-configlet-param>
+<!-- mandatory --><parameter>desc</parameter>
+<!-- mandatory --><display-name>desc</display-name>
+<!-- mandatory --><parameter-type>Text Field</parameter-type>
+<description/>
+<regex-value/>
+<configured-value-xpath>/device/interface-information/physical-interface[name=&apos;$interface&apos;]/description/text()</configured-value-xpath>
+<default-value/>
+<!-- mandatory --><parameter-order>1</parameter-order>
+</cli-configlet-param>
+
+<cli-configlet-param>
+<!-- mandatory --><parameter>mtu</parameter>
+<!-- mandatory --><display-name>mtu</display-name>
+<!-- mandatory --><parameter-type>Text Field</parameter-type>
+<description/>
+<regex-value/>
+<configured-value-xpath>/device/interface-information/physical-interface[name=&apos;$interface&apos;]/mtu/text()</configured-value-xpath>
+<default-value/>
+<!-- mandatory --><parameter-order>1</parameter-order>
+</cli-configlet-param>
+
+</cli-configlet-params>
+
+</cli-configlet>
+
+
+
+</cli-configlets>
